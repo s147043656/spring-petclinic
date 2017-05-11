@@ -1,0 +1,35 @@
+pipeline {
+    agent {
+	label '$AGENT1'
+	}
+    stages {
+        stage('Prep') {
+        agent {
+            label 'AGENT1'
+        }
+            steps {
+                sh 'echo $JAVA_HOME'
+                sh 'echo $MVN_HOME'
+                sh 'echo $PATH'
+                sh 'pwd'
+                sh 'sleep 5'
+            }
+        }
+        stage('Build') {
+            agent {
+                label 'AGENT2'
+            }
+            steps {
+		checkout(
+		    [$class: 'GitSCM',
+    		 branches: [[name: '*/master']],
+		     doGenerateSubmoduleConfigurations: false,
+	    	 extensions: [],
+		     submoduleCfg: [],
+	    	 userRemoteConfigs: [[url: '$SCM_URL']]]
+		)
+                sh 'mvn clean package'
+            }
+        }
+    }
+}
