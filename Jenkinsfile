@@ -1,15 +1,11 @@
 pipeline {
-    parameters {
-        string(defaultValue: "$agent1", description: 'What build agent1?', name: 'agent1')
-	string(defaultValue: "$agent2", description: 'What build agent2?', name: 'agent2')
-    }
     agent {
-	label '${params.agent1}'
+	label'agent1
 	}
     stages {
         stage('Prep') {
         agent {
-            label '${params.agent1}'
+            label agent1
         }
             steps {
                 sh 'echo $JAVA_HOME'
@@ -21,7 +17,7 @@ pipeline {
         }
         stage('Build') {
             agent {
-                label 'agent2'
+                label agent2
             }
             steps {
 		checkout(
@@ -30,7 +26,7 @@ pipeline {
 		     doGenerateSubmoduleConfigurations: false,
 	    	 extensions: [],
 		     submoduleCfg: [],
-	    	 userRemoteConfigs: [[url: 'gitUrl']]]
+	    	 userRemoteConfigs: [[url: gitUrl]]]
 		)
                 sh 'mvn clean package'
             }
