@@ -11,5 +11,13 @@ pipeline {
 				build 'PetClinic-Compile'
 			}
 		}
+		stage('Test') {
+			agent {
+				label agent2
+			}
+			steps {
+				build 'PetClinic-Test'
+			}
+		}
 	}
 }
