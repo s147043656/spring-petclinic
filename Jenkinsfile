@@ -19,6 +19,7 @@ pipeline {
 			steps {
 				git url: gitUrl
 				sh 'mvn -B verify'
+				junit '**/target/surefire-reports/*.xml'
 			}
 		}
 	}
