@@ -1,11 +1,11 @@
 pipeline {
     agent {
-	label '$AGENT1'
+	label 'agent1'
 	}
     stages {
         stage('Prep') {
         agent {
-            label 'AGENT1'
+            label 'agent1'
         }
             steps {
                 sh 'echo $JAVA_HOME'
@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Build') {
             agent {
-                label 'AGENT2'
+                label 'agent2'
             }
             steps {
 		checkout(
@@ -26,7 +26,7 @@ pipeline {
 		     doGenerateSubmoduleConfigurations: false,
 	    	 extensions: [],
 		     submoduleCfg: [],
-	    	 userRemoteConfigs: [[url: '$SCM_URL']]]
+	    	 userRemoteConfigs: [[url: 'gitUrl']]]
 		)
                 sh 'mvn clean package'
             }
