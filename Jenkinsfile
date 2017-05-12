@@ -32,6 +32,9 @@ pipeline {
             }
 	}
 	stage('Test results') {
+	    agent {
+		label agent2
+	    }
 	    steps {
 		junit '**/target/surefire-reports/*.xml'
 	    }
