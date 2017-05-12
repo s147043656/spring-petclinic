@@ -8,7 +8,8 @@ pipeline {
 				label agent2
 			}
 			steps {
-				build 'PetClinic-Compile'
+				git url: gitUrl
+				sh 'mvn -B compile'
 			}
 		}
 		stage('Test') {
@@ -16,7 +17,8 @@ pipeline {
 				label agent2
 			}
 			steps {
-				build 'PetClinic-Test'
+				git url: gitUrl
+				sh 'mvn -B verify'
 			}
 		}
 	}
