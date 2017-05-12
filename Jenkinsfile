@@ -1,4 +1,8 @@
 pipeline {
+    parameters {
+        string(defaultValue: "abc", description: 'What build agent1?', name: 'agent1')
+	string(defaultValue: "xyz", description: 'What build agent2?', name: 'agent2')
+    }
     agent {
 	label '${params.agent1}'
 	}
