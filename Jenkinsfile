@@ -30,6 +30,7 @@ pipeline {
 		)
                 sh 'mvn clean package'
             }
+	}
 	stage('Test results') {
 		junit '**/target/surefire-reports/*.xml'
 	    }
