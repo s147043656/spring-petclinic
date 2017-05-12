@@ -1,11 +1,11 @@
 pipeline {
     agent {
-	label 'agent1'
+	label '${env.agent1}'
 	}
     stages {
         stage('Prep') {
         agent {
-            label 'agent1'
+            label '${env.agent1}'
         }
             steps {
                 sh 'echo $JAVA_HOME'
