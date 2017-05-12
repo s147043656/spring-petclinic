@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 pipeline {
 	agent any
 	stages {
@@ -12,6 +14,7 @@ pipeline {
 				git url: gitUrl
 				sh 'mvn -B verify'
 				junit '**/target/surefire-reports/*.xml'
+				archiveArtifacts '**/target/*.war'
 			}
 		}
 	}
