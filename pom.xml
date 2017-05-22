@@ -216,7 +216,7 @@
         <configuration>
           <server>tomcat-development-server</server>
           <url>http://192.168.7.100:8081/manager/text</url>
-          <warFile>target\petclinic.war</warFile>
+          <warFile>target\${artifactId}-${version}.war</warFile>
           <path>/petclinic</path>
         </configuration>
       </plugin>
