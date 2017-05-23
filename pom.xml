@@ -216,7 +216,7 @@
         <configuration>
           <server>tomcat8-dev1</server>
           <url>http://127.0.0.1:8081/manager/text</url>
-          <warFile>target\${project.build.finalName}</warFile>
+          <warFile>target\${project.build.finalName}.war</warFile>
           <path>/petclinic</path>
         </configuration>
       </plugin>
