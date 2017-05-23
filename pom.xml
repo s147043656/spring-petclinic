@@ -214,10 +214,10 @@
         <artifactId>tomcat7-maven-plugin</artifactId>
         <version>2.2</version>
         <configuration>
-          <server>tomcat-development-server</server>
-          <url>http://192.168.7.100:8081/manager/text</url>
+          <server>tomcat8-dev</server>
+          <url>http://127.0.0.1:8081/manager/text</url>
           <warFile>target\${artifactId}-${version}.war</warFile>
-          <path>/petclinic</path>
+          <path>/${artifactId}-${version}</path>
         </configuration>
       </plugin>
 
